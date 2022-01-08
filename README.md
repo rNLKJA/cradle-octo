@@ -64,19 +64,15 @@ Before start the project, please make sure that all dependent files are installe
 
 ``` bash
 # install dependency modules / apis
-npm install --check-files
+npm install # this command should automatically install or dependent modules based on package.json
 
 # add new modules
 npm install -g --save-dev [MODULE NAME]
 
-# start development SERVER with nodemon package
-# start with npm
+# start development SERVER with nodemon package via the command
 npm start
 
-# start with nodemon
-nodemon app.ts
-
-# if neither of these approach failed, please use the node instead
+# if this approach failed, please check nodemon installation or use node instead
 node app.ts
 ```
 
