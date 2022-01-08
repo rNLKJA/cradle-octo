@@ -35,9 +35,14 @@ Access project related documentations? Check [Notion!](shorturl.at/qBIJL)
 Project Back End
     |---- __test__      # store testing scripts
     |---- config        # store api configuration files
+    |---- controller    # backend routes handler
+    |---- data          # store local data for server
     |---- models        # store database schema | models
     |---- public        # store public files, e.g. images
+            |---- css
             |---- views 
+                    |---- error 
+                    |---- index
     |---- routes        # defined backend REST access routes      
 ```
 
