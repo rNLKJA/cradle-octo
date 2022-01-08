@@ -1,0 +1,26 @@
+{
+  "name": "-",
+  "version": "1.0.0",
+  "description": "随便の后端技术堆积站",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chuangyu-hscy/-.git"
+  },
+  "keywords": [
+    "nodejs",
+    "sql",
+    "mongodb",
+    "expressjs",
+    "api-rest"
+  ],
+  "author": "Sunchuangyu Huang, Jiahong Zheng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chuangyu-hscy/-/issues"
+  },
+  "homepage": "https://github.com/chuangyu-hscy/-#readme"
+}
