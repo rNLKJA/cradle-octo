@@ -47,8 +47,16 @@ Project Back End
 ```
 
 ## Main Software Dependencies
-<img src="https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/256/square_480/nodejslogo.png" width=40 height=40 align='left'> [Node.JS](https://nodejs.org/zh-cn/) <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC3K-0hD8O4jYTq08n2QRjl5JCQaiVMXB5vHlxmDIfRE5e-vbD1bGg5GB5trDgEar29OU&usqp=CAU" alt="nodejs logo" width=100 height=40 align='left'> [Express.JS](https://expressjs.com/zh-cn/) <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKqvvX_EDD6iSTNVOiisKFTnn1UbWaMlSkp9hkGCk0bCI5loN1X90PaF50415A1S_uAhE&usqp=CAU" alt="mongodb logo" width=40 height=40 align='left'> MongoDB <img src="http://assets.stickpng.com/images/5848104fcef1014c0b5e4950.png" alt="sql logo" width=40 height=40 align='left'> [SQL](https://www.mysql.com/cn/) <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" alt="typescript logo" width=40 height=40 align='left'> [TypeScript](https://www.typescriptlang.org/)
+<img src="https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/256/square_480/nodejslogo.png" width=40 height=40 align='left'> [Node.JS](https://nodejs.org/zh-cn/) 
 
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC3K-0hD8O4jYTq08n2QRjl5JCQaiVMXB5vHlxmDIfRE5e-vbD1bGg5GB5trDgEar29OU&usqp=CAU" alt="nodejs logo" width=100 height=40 align='left'> [Express.JS](https://expressjs.com/zh-cn/) 
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKqvvX_EDD6iSTNVOiisKFTnn1UbWaMlSkp9hkGCk0bCI5loN1X90PaF50415A1S_uAhE&usqp=CAU" alt="mongodb logo" width=40 height=40 align='left'> MongoDB 
+
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" alt="typescript logo" width=40 height=40 align='left'> [TypeScript](https://www.typescriptlang.org/)
+
+<br />
 More dependency information please check `package.json`.
 
 ## Quick Start Guide
@@ -59,11 +67,17 @@ Before start the project, please make sure that all dependent files are installe
 npm install --check-files
 
 # add new modules
-npm install -g [MODULE NAME]
+npm install -g --save-dev [MODULE NAME]
 
 # start development SERVER with nodemon package
-npm install -g nodemon # navigate to root directory and run the following command
-nodemon app.js
+# start with npm
+npm start
+
+# start with nodemon
+nodemon app.ts
+
+# if neither of these approach failed, please use the node instead
+node app.ts
 ```
 
 ## License
