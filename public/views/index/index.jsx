@@ -2,10 +2,10 @@ const React = require("react");
 
 function Index({ name }) {
   return (
-    <div>
+    <main>
       <h1>Hello: {name}</h1>
       <img src="/img/nachoneko.jpg" alt="amashiro mama" />
-    </div>
+    </main>
   );
 }
 
