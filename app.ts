@@ -22,6 +22,10 @@ app.get("/", (req: Request, res: Response) => {
   res.render("./index/index", { name: "rNLKJA" });
 });
 
+app.post("/", (req: Request, res: Response) => {
+  console.log(req.body);
+});
+
 // define 404 response page
 app.get("*", (req: Request, res: Response) => {
   res.render("./error/404");
