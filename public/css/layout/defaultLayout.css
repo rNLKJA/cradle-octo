@@ -1,0 +1,19 @@
+footer {
+  bottom: 0;
+  height: auto;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  /* background-color: gray; */
+  font-size: 20px;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:after {
+  color: royalblue;
+}
