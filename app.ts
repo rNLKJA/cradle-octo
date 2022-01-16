@@ -7,12 +7,19 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
+// set middleware
+app.set("views", path.resolve(__dirname + "/public/views"));
+app.set("view engine", "jsx");
+app.engine("jsx", require("express-react-views").createEngine());
+app.static("public");
+
 // import custom functions
 const logAppStartInformation = require("./data/appStartInfo");
 
 // define back-end application home route
 app.get("/", (req: Request, res: Response) => {
-  res.sendFile(path.resolve(`${__dirname}/public/views/index.html`));
+  // res.sendFile(path.resolve(`${__dirname}/public/views/index.html`));
+  res.render("./index/index", { name: "rNLKJA" });
 });
 
 // define 404 response page
