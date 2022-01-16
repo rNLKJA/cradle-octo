@@ -24,7 +24,7 @@ app.get("/", (req: Request, res: Response) => {
 
 // define 404 response page
 app.get("*", (req: Request, res: Response) => {
-  res.sendFile(path.resolve(`${__dirname}/public/views/error/404.html`));
+  res.render("./error/404");
 });
 
 // start back-end server
