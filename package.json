@@ -25,11 +25,18 @@
   },
   "homepage": "https://github.com/chuangyu-hscy/-#readme",
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.1",
+    "@chakra-ui/react": "^1.7.4",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "express-react-views": "^0.11.0",
+    "formik": "^2.2.9",
+    "framer-motion": "^5.6.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
