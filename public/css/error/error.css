@@ -1,0 +1,27 @@
+.container {
+  height: auto;
+  vertical-align: middle;
+  top: 50%;
+  transform: translateY(-50%);
+  position: fixed;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3vw;
+  left: 10%;
+}
+
+.gridItem {
+  width: 100%;
+}
+
+h1 {
+  color: red;
+  font-weight: bold;
+  line-height: 50px;
+  vertical-align: middle;
+}
+
+p {
+  line-height: 25px;
+  vertical-align: middle;
+}
