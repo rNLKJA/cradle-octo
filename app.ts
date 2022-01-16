@@ -11,7 +11,7 @@ const app = express();
 app.set("views", path.resolve(__dirname + "/public/views"));
 app.set("view engine", "jsx");
 app.engine("jsx", require("express-react-views").createEngine());
-app.static("public");
+app.use(express.static("public"));
 
 // import custom functions
 const logAppStartInformation = require("./data/appStartInfo");
