@@ -26,7 +26,9 @@
   "homepage": "https://github.com/chuangyu-hscy/-#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
