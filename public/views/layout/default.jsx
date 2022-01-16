@@ -6,6 +6,7 @@ function DefaultLayout(props) {
       <head>
         <meta name="author" content="rNLKJA" />
         <meta charSet="UTF-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="description" content="Free Web tutorials" />
         <meta name="keywords" content="HTML, CSS, JavaScript" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
