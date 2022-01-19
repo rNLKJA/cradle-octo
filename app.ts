@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
 require("./models/database");
 const bodyParser = require("body-parser");
 
@@ -20,6 +21,14 @@ app.engine("jsx", require("express-react-views").createEngine());
 app.use(express.static("public"));
 app.use(bodyParser.json()); // enable json request parse ability
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "http://localhost:9550"],
+    method: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }),
+);
 
 // define back-end application home route
 app.get("/", (req: Request, res: Response) => {
