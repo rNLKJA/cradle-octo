@@ -25,7 +25,11 @@ const generateNewCode = async (req: Request, res: Response) => {
     user = await User.findOne({ username: req.body.username }).lean();
 
     if (!user || user === undefined || user === null) {
-      return res.json({ status: false, msg: "No user found", statusCode: 123 }); //TODO: define status code
+      return res.json({
+        status: false,
+        message: "No user found",
+        statusCode: 123,
+      }); //TODO: define status code
     }
 
     // a user can only create 2 invitation codes
@@ -34,7 +38,7 @@ const generateNewCode = async (req: Request, res: Response) => {
     if (codes.length >= 2) {
       return res.json({
         status: false,
-        msg: "The maximum number of generated invitation code is 2.",
+        message: "The maximum number of generated invitation code is 2.",
       });
     }
 
@@ -53,7 +57,7 @@ const generateNewCode = async (req: Request, res: Response) => {
 
     return res.json({
       status: true,
-      msg: "new code created",
+      message: "new code created",
       code: invitation.code,
       statusCode: 123,
     });

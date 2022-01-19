@@ -24,7 +24,11 @@ const userExistence = async (req: Request, res: Response) => {
     user = await User.findOne({ username: req.body.username }).lean();
 
     if (!user || user === undefined || user === null) {
-      return res.json({ status: false, msg: "No user found", statusCode: 123 });
+      return res.json({
+        status: false,
+        message: "No user found",
+        statusCode: 123,
+      });
     }
 
     console.log(`Check user ${req.body.username} existence`);
@@ -54,7 +58,7 @@ const createNewUser = async (req: Request, res: Response) => {
     if (req.body.invitation === undefined) {
       return res.json({
         status: false,
-        msg: "Please enter a valid invitation code",
+        message: "Please enter a valid invitation code",
         statusCode: 123, //TODO: define the status code
       });
     }
@@ -67,7 +71,7 @@ const createNewUser = async (req: Request, res: Response) => {
     if (user) {
       return res.json({
         status: false,
-        msg: "Duplicate account",
+        message: "Duplicate account",
         statusCode: 123,
       });
     }
@@ -79,7 +83,7 @@ const createNewUser = async (req: Request, res: Response) => {
     if (code === null) {
       return res.json({
         status: false,
-        msg: "Invitation code doesn't exist.",
+        message: "Invitation code doesn't exist.",
         statusCode: 123,
       });
     }
@@ -109,7 +113,7 @@ const createNewUser = async (req: Request, res: Response) => {
 
     return res.send({
       status: true,
-      msg: `You have successfully create a new account for user: ${req.body.username}.`,
+      message: `You have successfully create a new account for user: ${req.body.username}.`,
       accountInfo: newUser,
     });
   } catch (err) {
