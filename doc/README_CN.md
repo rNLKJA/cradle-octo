@@ -30,10 +30,10 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" alt="typescript logo" width=40 height=40 align='left'> [TypeScript](https://www.typescriptlang.org/)
 
 <br />
-More dependency information please check `package.json`.
+更多API或依存库信息请查看 `package.json`.
 
 ## Quick Start Guide
-Before start the project, please make sure that all dependent files are installed in your local machine. Also, please make sure that `node` and `npm` are install on your local machine.
+运行项目之前，请确保所有的API和依存库已安装。并且请确保 `node` 和 `npm` 已安装。
 
 ``` bash
 # install dependency modules / apis
