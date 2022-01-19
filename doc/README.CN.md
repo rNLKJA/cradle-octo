@@ -1,4 +1,4 @@
-<div><h1>Project Credle</h1> <span align="right"><a href="https://github.com/chuangyu-hscy/-/blob/main/README.md">EN</a> / <a href="https://github.com/chuangyu-hscy/-/blob/main/doc/README.CN.md">CN</a></span></div>
+<div><h1>Project Cradle</h1> <span align="right"><a href="https://github.com/chuangyu-hscy/-/blob/main/README.md">EN</a> / <a href="https://github.com/chuangyu-hscy/-/blob/main/doc/README.CN.md">CN</a></span></div>
 
 ## 摘要
 本项目是两个人从零开始搭建的个人技术堆放站，展示我们对CS、IT、DS的理解。 虽然我们不知道自己会遇到什么困难，但我们会尽力去克服它们。
