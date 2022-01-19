@@ -45,4 +45,5 @@ db.once("open", async () => {
 });
 
 // obtain the database schemas
-require("./userSchema");
+require("./user/userSchema");
+require("./invitation/invitationCodeSchema");
