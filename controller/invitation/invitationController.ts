@@ -27,7 +27,11 @@ const generateNewCode = async (req: Request, res: Response) => {
     user = await User.findOne({ username: req.body.username }).lean();
 
     if (!user || user === undefined || user === null) {
-      utils.printLog(`User ${req.body.username} not found`);
+      utils.printLog(
+        "Generate invitation code",
+        `User ${req.body.username} not found`,
+      );
+
       return res.json({
         status: false,
         message: "No user found",
@@ -40,6 +44,7 @@ const generateNewCode = async (req: Request, res: Response) => {
 
     if (codes.length >= 2) {
       utils.printLog(
+        "Generate invitation code",
         `User ${req.body.username} has already generated two invitation code`,
       );
       return res.json({
@@ -59,7 +64,10 @@ const generateNewCode = async (req: Request, res: Response) => {
     // save invitation object
     await new InvitationCode(invitation).save();
 
-    utils.printLog(`${invitation.inviter} generated an invitation code.`);
+    utils.printLog(
+      "Generate invitation code",
+      `${invitation.inviter} generate an invitation code.`,
+    );
 
     return res.json({
       status: true,

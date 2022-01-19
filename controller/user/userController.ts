@@ -25,6 +25,10 @@ const userExistence = async (req: Request, res: Response) => {
     user = await User.findOne({ username: req.body.username }).lean();
 
     if (!user || user === undefined || user === null) {
+      utils.printLog(
+        "Check user existence",
+        `User ${req.body.username} doesn't exist`,
+      );
       return res.json({
         status: false,
         message: "No user found",
@@ -32,7 +36,7 @@ const userExistence = async (req: Request, res: Response) => {
       });
     }
 
-    utils.printLog(`Check user ${req.body.username} existence`);
+    utils.printLog("Check user existence", `User ${req.body.username} exist`);
 
     return res.json({
       status: true,
@@ -57,6 +61,8 @@ const createNewUser = async (req: Request, res: Response) => {
   try {
     // if no invitation code, reject creation request
     if (req.body.invitation === undefined) {
+      utils.printLog("Create a new user", `No Invitation Code provided`);
+
       return res.json({
         status: false,
         message: "Please enter a valid invitation code",
@@ -70,6 +76,11 @@ const createNewUser = async (req: Request, res: Response) => {
     user = await User.findOne({ username: req.body.username }).lean();
 
     if (user) {
+      utils.printLog(
+        "Create a new user",
+        `User ${req.body.username} already exist`,
+      );
+
       return res.json({
         status: false,
         message: "Duplicate account",
@@ -82,6 +93,11 @@ const createNewUser = async (req: Request, res: Response) => {
       code: req.body.invitation,
     }).lean();
     if (code === null) {
+      utils.printLog(
+        "Create a new user",
+        `User ${req.body.username} has invalid invitation code`,
+      );
+
       return res.json({
         status: false,
         message: "Invitation code doesn't exist.",
@@ -110,7 +126,10 @@ const createNewUser = async (req: Request, res: Response) => {
       isValid: false,
     }).save(); // save new user information
 
-    utils.printLog(`A new user ${req.body.username} has been created.`);
+    utils.printLog(
+      "Create a new user",
+      `A new user ${req.body.username} has been create.`,
+    );
 
     return res.send({
       status: true,
