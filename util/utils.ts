@@ -1,11 +1,15 @@
 /**
  * Log current message and information on developer console with timestamp
+ * @param {String} action
  * @param {String} content
  */
-const printLog = (content: String) => {
+const printLog = (
+  action: String = "",
+  content: String = "NO CONTENT PROVIDED",
+) => {
   const now = new Date();
   console.log(`
-	${now.toISOString()}
+	${now.toISOString()}        ${action}
 	${content}
 	`);
 };
