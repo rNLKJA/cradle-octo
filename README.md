@@ -1,4 +1,4 @@
-<div><h1>Project Credle</h1> <span align="right"><a href="https://github.com/chuangyu-hscy/-/blob/main/README.md">EN</a> / <a href="https://github.com/chuangyu-hscy/-/blob/main/doc/README.CN.md">CN</a></span></div>
+<div><h1>Project Cradle</h1> <span align="right"><a href="https://github.com/chuangyu-hscy/-/blob/main/README.md">EN</a> / <a href="https://github.com/chuangyu-hscy/-/blob/main/doc/README.CN.md">CN</a></span></div>
 
 <hr />
 
