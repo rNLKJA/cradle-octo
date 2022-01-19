@@ -36,7 +36,7 @@
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" alt="typescript logo" width=40 height=40 align='left'> [TypeScript](https://www.typescriptlang.org/)
 
 <br />
-更多API或依存库信息请查看 `package.json`.
+更多API或依存库信息请查看 `package.json`。
 
 ## Quick Start Guide
 运行项目之前，请确保所有的API和依存库已安装。并且请确保 `node` 和 `npm` 已安装。
