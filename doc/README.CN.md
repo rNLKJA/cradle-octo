@@ -19,6 +19,12 @@
 - [快速使用指南](#quick-start-guide)
 - [License](#license)
 
+---
+
+## Project Members
+**rNLKJA**: https://rin.contact/
+**kwitter777***: https://github.com/kwitter777
+
 ## Main Software Dependencies
 <img src="https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/256/square_480/nodejslogo.png" width=40 height=40 align='left'> [Node.JS](https://nodejs.org/zh-cn/) 
 
