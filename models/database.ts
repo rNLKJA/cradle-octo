@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 
 var dbAddress = "";
 const connectionString =
-  "mongodb+srv://<username>:<password>@cradle.qdqax.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  "mongodb+srv://<username>:<password>@cradle.qdqax.mongodb.net/cradle0?retryWrites=true&w=majority";
 
 // if the app is running on heroku
 if (process.env.PORT) {
@@ -17,7 +17,7 @@ if (process.env.PORT) {
 } else {
   // if running locally
   dbAddress =
-    "mongodb+srv://cradle:?8$jLxSN@cradle.qdqax.mongodb.net/cradle?retryWrites=true&w=majority";
+    "mongodb+srv://cradle:IZlIiNpa4XCdjEHo@cradle.qdqax.mongodb.net/cradle?retryWrites=true&w=majority";
 }
 
 // connect to mongodb database
@@ -26,7 +26,7 @@ mongoose.connect(dbAddress, {
   // useCreateIndex: true,
   useUnifiedTopology: true,
   // useFindAndModify: false,
-  dbName: "cradle",
+  dbName: "Cradle0",
 });
 
 // connect to the database
@@ -45,3 +45,4 @@ db.once("open", async () => {
 });
 
 // obtain the database schemas
+require("./userSchema");
