@@ -2,6 +2,8 @@
 export interface userType {
   username: String;
   password: String;
+  firstName: String;
+  lastName: String;
   email: String;
   phone: String;
   occupation: String;
