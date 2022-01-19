@@ -2,7 +2,9 @@
 import mongoose from "mongoose";
 const User = mongoose.model("User");
 const InvitationCode = mongoose.model("InvitationCode");
+
 import { userType } from "./userInterface";
+import { invitationType } from "../invitation/invitationInterface";
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -25,6 +27,8 @@ const userExistence = async (req: Request, res: Response) => {
       return res.json({ status: false, msg: "No user found", statusCode: 123 });
     }
 
+    console.log(`Check user ${req.body.username} existence`);
+
     return res.json({
       status: true,
       username: user.username,
@@ -44,8 +48,6 @@ const userExistence = async (req: Request, res: Response) => {
  * req: {username, firstName, lastName, email, password, phone, isDeveloper, isAdmin}
  * @param {express.Response} res - response from the system.
  */
-
-//TODO: incomplete function
 const createNewUser = async (req: Request, res: Response) => {
   try {
     // if no invitation code, reject creation request
@@ -71,19 +73,21 @@ const createNewUser = async (req: Request, res: Response) => {
     }
 
     // if there is no valid invitation code reject creation request
-    const code = await InvitationCode.findOne({
+    let code: invitationType = await InvitationCode.findOne({
       code: req.body.invitation,
     }).lean();
     if (code === null) {
       return res.json({
         status: false,
-        msg: "Invitation code doesn't exist",
+        msg: "Invitation code doesn't exist.",
         statusCode: 123,
       });
     }
 
     // if valid, remove the invitation code from the invitationCode collection
-    await InvitationCode.deleteOne({ code: req.body.invitation });
+    if (code.inviter !== "Cradle") {
+      await InvitationCode.deleteOne({ code: req.body.invitation });
+    }
 
     // construct schema for new user
     const newUser = await new User({
@@ -100,9 +104,12 @@ const createNewUser = async (req: Request, res: Response) => {
       isAdmin: req.body.isAdmin,
       isValid: false,
     }).save(); // save new user information
+
+    console.log(`A new user ${req.body.username} has been created.`);
+
     return res.send({
       status: true,
-      msg: `You have successfully create a new account for user: ${req.body.username}`,
+      msg: `You have successfully create a new account for user: ${req.body.username}.`,
       accountInfo: newUser,
     });
   } catch (err) {
