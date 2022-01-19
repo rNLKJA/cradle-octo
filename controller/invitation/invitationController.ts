@@ -29,12 +29,12 @@ const generateNewCode = async (req: Request, res: Response) => {
     }
 
     // a user can only create 2 invitation codes
-    const codes = await InvitationCode.find({ username: user.username }).lean();
+    const codes = await InvitationCode.find({ inviter: user.username }).lean();
 
     if (codes.length >= 2) {
       return res.json({
         status: false,
-        msg: "The maximum number of generated invitation code is 2",
+        msg: "The maximum number of generated invitation code is 2.",
       });
     }
 
@@ -48,6 +48,8 @@ const generateNewCode = async (req: Request, res: Response) => {
 
     // save invitation object
     await new InvitationCode(invitation).save();
+
+    console.log(`${invitation.inviter} generated a invitation code.`);
 
     return res.json({
       status: true,
