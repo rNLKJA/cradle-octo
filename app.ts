@@ -2,6 +2,11 @@
 import { Request, Response, NextFunction } from "express";
 const path = require("path");
 require("dotenv").config();
+const mongoose = require("mongoose");
+const passport = require("passport");
+const session = require("express-session");
+const jwt = require("jsonwebtoken");
+require("./models/database");
 
 // define express application entry point
 const express = require("express");
