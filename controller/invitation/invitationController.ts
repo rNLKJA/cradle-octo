@@ -12,6 +12,8 @@ const password = require("passport");
 import { Request, Response, NextFunction } from "express";
 const randomGenerator = require("../../util/randomGenerator");
 
+const utils = require("../../util/utils");
+
 /**
  * Generate new invitation code
  * This function will validate a user is in user database collection
@@ -53,7 +55,7 @@ const generateNewCode = async (req: Request, res: Response) => {
     // save invitation object
     await new InvitationCode(invitation).save();
 
-    console.log(`${invitation.inviter} generated a invitation code.`);
+    utils.printLog(`${invitation.inviter} generated a invitation code.`);
 
     return res.json({
       status: true,
@@ -62,7 +64,7 @@ const generateNewCode = async (req: Request, res: Response) => {
       statusCode: 123,
     });
   } catch (err) {
-    console.log(err);
+    utils.printLog(err);
   }
 };
 

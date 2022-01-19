@@ -10,6 +10,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const password = require("passport");
 import { Request, Response, NextFunction } from "express";
+const utils = require("../../util/utils");
 
 /**
  * User Validation
@@ -31,7 +32,7 @@ const userExistence = async (req: Request, res: Response) => {
       });
     }
 
-    console.log(`Check user ${req.body.username} existence`);
+    utils.printLog(`Check user ${req.body.username} existence`);
 
     return res.json({
       status: true,
@@ -109,7 +110,7 @@ const createNewUser = async (req: Request, res: Response) => {
       isValid: false,
     }).save(); // save new user information
 
-    console.log(`A new user ${req.body.username} has been created.`);
+    utils.printLog(`A new user ${req.body.username} has been created.`);
 
     return res.send({
       status: true,
@@ -117,7 +118,7 @@ const createNewUser = async (req: Request, res: Response) => {
       accountInfo: newUser,
     });
   } catch (err) {
-    console.log(err);
+    utils.printLog(err);
   }
 };
 
