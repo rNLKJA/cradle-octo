@@ -1,4 +1,6 @@
-# Credle
+<div><h1>Project Credle</h1> <span align="right"><a href="https://github.com/chuangyu-hscy/-/blob/main/README.md">EN</a> / <a href="https://github.com/chuangyu-hscy/-/tree/main/doc">CN</a></span></div>
+
+<hr />
 
 ## Summary
 
