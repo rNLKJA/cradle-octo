@@ -80,4 +80,5 @@ const generateNewCode = async (req: Request, res: Response) => {
   }
 };
 
+// exports defined modules
 module.exports = { generateNewCode };
