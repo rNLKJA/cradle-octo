@@ -92,6 +92,7 @@ const createNewUser = async (req: Request, res: Response) => {
     let code: invitationType = await InvitationCode.findOne({
       code: req.body.invitation,
     }).lean();
+
     if (code === null) {
       utils.printLog(
         "Create a new user",
