@@ -141,7 +141,7 @@ const createNewUser = async (req: Request, res: Response) => {
   }
 };
 
-// exports all functions
+// exports defined modules
 module.exports = {
   userExistence,
   createNewUser,
