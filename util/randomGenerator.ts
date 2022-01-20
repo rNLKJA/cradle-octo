@@ -14,4 +14,5 @@ const randomStringGenerator = async (length = 8) => {
   return result;
 };
 
+// exports defined modules
 module.exports = { randomStringGenerator };
