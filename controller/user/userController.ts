@@ -13,7 +13,7 @@ import { Request, Response, NextFunction } from "express";
 const utils = require("../../util/utils");
 
 /**
- * User Validation
+ * User Validation of user existence status
  * This function will validate a user is in user database collection
  * @param {express.Request, userType} req
  * req: {username}
