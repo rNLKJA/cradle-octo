@@ -60,7 +60,7 @@ const userValidation = async (req: Request, res: Response) => {
             message: "A user successfully request a JWT token",
             statusCode: 123,
             accessToken,
-            expiresIn: 1200,
+            expiresIn: 86400,
           });
         } else {
           // password compare status is false
