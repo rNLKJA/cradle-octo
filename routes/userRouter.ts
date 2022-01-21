@@ -6,11 +6,17 @@ import { Request, Response, NextFunction } from "express";
 // import controller functions
 const userController = require("../controller/user/userController");
 const invitationController = require("../controller/invitation/invitationController");
+const loginController = require("../controller/login/loginController");
 
 // check user existence
 userRouter.post("/userExistence", (req: Request, res: Response) =>
   userController.userExistence(req, res),
 );
+
+// valid user login information
+userRouter.post("/validateUser", (req: Request, res: Response) => {
+  loginController.userValidation(req, res);
+});
 
 // create a new user
 userRouter.post("/createNewUser", (req: Request, res: Response) =>
