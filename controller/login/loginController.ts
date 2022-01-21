@@ -9,6 +9,7 @@ import { Request, Response, NextFunction } from "express";
 const utils = require("../../util/utils");
 
 import { userType } from "../user/userInterface";
+import { css } from "@emotion/react";
 const csc = require("../../data/cradle.status.code/cradle.status.code");
 
 /**
@@ -32,9 +33,7 @@ const userValidation = async (req: Request, res: Response) => {
 
     if (user === null || user === undefined) {
       return res.json({
-        status: false,
-        message: "User doesn't exist, please enter a valid username",
-        csc: 101, //TODO: create a dedicate status code
+        ...csc.login(101),
       });
     }
 
@@ -57,16 +56,14 @@ const userValidation = async (req: Request, res: Response) => {
           );
 
           return res.json({
-            ...csc.login(100)[0],
+            ...csc.login(100),
             accessToken,
             expiresIn: 86400,
           });
         } else {
           // password compare status is false
           return res.json({
-            status: false,
-            message: "User password is incorrect, please try again.",
-            csc: 102,
+            ...csc.login(102),
           });
         }
       },
