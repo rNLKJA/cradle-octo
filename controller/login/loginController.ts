@@ -9,6 +9,7 @@ import { Request, Response, NextFunction } from "express";
 const utils = require("../../util/utils");
 
 import { userType } from "../user/userInterface";
+const csc = require("../../data/cradle.status.code/cradle.status.code");
 
 /**
  * User Validation
@@ -33,7 +34,7 @@ const userValidation = async (req: Request, res: Response) => {
       return res.json({
         status: false,
         message: "User doesn't exist, please enter a valid username",
-        statusCode: 123, //TODO: create a dedicate status code
+        csc: 101, //TODO: create a dedicate status code
       });
     }
 
@@ -56,9 +57,7 @@ const userValidation = async (req: Request, res: Response) => {
           );
 
           return res.json({
-            status: true,
-            message: "A user successfully request a JWT token",
-            statusCode: 123,
+            ...csc.login(100)[0],
             accessToken,
             expiresIn: 86400,
           });
@@ -67,7 +66,7 @@ const userValidation = async (req: Request, res: Response) => {
           return res.json({
             status: false,
             message: "User password is incorrect, please try again.",
-            statusCode: 123,
+            csc: 102,
           });
         }
       },
