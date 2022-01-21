@@ -24,7 +24,8 @@ cradle.engine("jsx", require("express-react-views").createEngine());
 cradle.use(express.static("public"));
 cradle.use(bodyParser.json()); // enable json request parse ability
 cradle.use(bodyParser.urlencoded({ extended: true }));
-cradle.use(session({ name: "jwt", keys: ["ProjectCradle"] }));
+cradle.use(session({ name: "jwt", secret: process.env.SESSION_SECRETY }));
+
 cradle.use(cors(corsConfig));
 
 // define back-end application home route
