@@ -58,6 +58,11 @@ const userValidation = async (req: Request, res: Response) => {
           // if login successful, register user information into session.
           req.session.authenticated = true;
           req.session.jwt = accessToken;
+          req.session.user = {
+            username: user.username,
+            email: user.email,
+            admin: user.isAdmin,
+          };
 
           console.log(req.session);
 
