@@ -5,7 +5,7 @@ const User = mongoose.model("User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const password = require("passport");
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 const utils = require("../../util/utils");
 
 import { userType } from "../user/userInterface";
@@ -54,6 +54,12 @@ const userValidation = async (req: Request, res: Response) => {
             user.username,
             process.env.ACCESS_TOKEN_SECRET,
           );
+
+          // if login successful, register user information into session.
+          req.session.authenticated = true;
+          req.session.jwt = accessToken;
+
+          console.log(req.session);
 
           return res.json({
             ...csc.login(100),
