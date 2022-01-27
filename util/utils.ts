@@ -4,7 +4,7 @@
  * @param {String} content
  */
 const printLog = (
-  action: String = "",
+  action: String = "NO ACTION SPECIFIED",
   content: String = "NO CONTENT PROVIDED",
 ) => {
   const now = new Date();
