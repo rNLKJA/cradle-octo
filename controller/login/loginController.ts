@@ -51,24 +51,29 @@ const userValidation = async (req: Request, res: Response) => {
           // password compare status is true
 
           const accessToken = jwt.sign(
-            user.username,
+            { user: user.username, email: user.email },
             process.env.ACCESS_TOKEN_SECRET,
           );
 
           // if login successful, register user information into session.
-          req.session.authenticated = true;
-          req.session.jwt = accessToken;
-          req.session.user = {
-            username: user.username,
-            email: user.email,
-            admin: user.isAdmin,
-          };
+          // req.session.authenticated = true;
+          // req.session.jwt = accessToken;
+          // req.session.user = {
+          //   username: user.username,
+          //   email: user.email,
+          //   admin: user.isAdmin,
+          // };
 
-          console.log(req.session);
+          res.cookie("jwt", accessToken, {
+            httpOnly: true,
+            // secure: true,
+            // maxAge: 93600,
+            // signed: true,
+          });
 
           return res.json({
             ...csc.login(100),
-            accessToken,
+            token: accessToken,
             expiresIn: 86400,
           });
         } else {
