@@ -137,29 +137,6 @@ const createNewUser = async (req: Request, res: Response) => {
   }
 };
 
-const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.session.jwt);
-
-  // const authHeader = req.headers["authorization"];
-  // const token = authHeader && authHeader.split(" ")[1];
-
-  // if (token == null) return res.sendStatus(401);
-
-  // jwt.verify(
-  //   req.session.jwt,
-  //   process.env.ACCESS_TOKEN_SECRET as string,
-  //   (err: any, user: any) => {
-  //     utils.printLog("JWT Authentication", err);
-
-  //     if (err) return res.sendStatus(403);
-
-  //     req.session.user = user;
-
-  //     next();
-  //   },
-  // );
-};
-
 // exports defined modules
 module.exports = {
   userExistence,
