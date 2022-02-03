@@ -5,9 +5,12 @@ const utils = require("../util/utils");
 
 const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
   // obtain jwt token
+  console.log(req.cookies.jwt);
   const token = req.session.jwt;
 
   if (token == null) return res.sendStatus(401);
+
+  console.log(token);
 
   jwt.verify(
     req.session.jwt,
@@ -17,12 +20,10 @@ const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
 
       if (err) return res.sendStatus(403);
 
-      req.session.user = user;
-
       // next();
       console.log("true");
     },
   );
 };
 
-module.exports = authenticateToken;
+module.exports = { authenticateToken };
