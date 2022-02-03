@@ -17,6 +17,7 @@ const corsConfig = require("./config/cors.config");
 
 require("./models/database");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 // define express application entry point
 const express = require("express");
@@ -30,6 +31,7 @@ cradle.engine("jsx", require("express-react-views").createEngine());
 cradle.use(express.static("public"));
 cradle.use(bodyParser.json()); // enable json request parse ability
 cradle.use(bodyParser.urlencoded({ extended: true }));
+cradle.use(cookieParser("secret"));
 
 cradle.use(session(sessionConfig));
 cradle.use(cors(corsConfig));
@@ -47,7 +49,7 @@ const sessionRouter = require("./routes/sessionRouter");
 // handle user related functions
 cradle.use("/user", userRouter);
 
-// // TODO: remove this testing route
+// TODO: remove this testing route
 // cradle.use("/session", sessionRouter);
 
 // define 404 response page
