@@ -42,9 +42,9 @@ const userExistence = async (req: Request, res: Response) => {
       ...csc.user(100),
       user: {
         username: user.username,
-        isValid: user.isValid,
-        isAdmin: user.isAdmin,
-        isDeveloper: user.isDeveloper,
+        // isValid: user.isValid,
+        // isAdmin: user.isAdmin,
+        // isDeveloper: user.isDeveloper,
       },
     });
   } catch (err) {
@@ -114,10 +114,10 @@ const createNewUser = async (req: Request, res: Response) => {
         req.body.password,
         parseInt(process.env.SALT),
       ),
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
+      // firstName: req.body.firstName,
+      // lastName: req.body.lastName,
       email: req.body.email,
-      phone: req.body.phone,
+      // phone: req.body.phone,
       isDeveloper: req.body.isDeveloper,
       isAdmin: req.body.isAdmin,
       isValid: false,
@@ -128,7 +128,9 @@ const createNewUser = async (req: Request, res: Response) => {
       `A new user ${req.body.username} has been create.`,
     );
 
-    return res.send({
+    // console.log(csc.user(105));
+
+    return res.json({
       ...csc.user(105),
       user: newUser,
     });
