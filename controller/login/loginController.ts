@@ -29,7 +29,7 @@ const userValidation = async (req: Request, res: Response) => {
   try {
     // if user doesn't exist, then return false status
     let user: userType;
-    user = await User.findOne({ email: req.body.email }).lean();
+    user = await User.findOne({ userName: req.body.username }).lean();
 
     if (user === null || user === undefined) {
       return res.json({
@@ -78,6 +78,7 @@ const userValidation = async (req: Request, res: Response) => {
           });
         } else {
           // password compare status is false
+          // console.log(csc.login(102));
           return res.json({
             ...csc.login(102),
           });
