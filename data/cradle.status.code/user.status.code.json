@@ -12,17 +12,17 @@
   {
     "status": false,
     "message": "Invalid invitation code!",
-    "statusCode": 102
+    "csc": 102
   },
   { "status": false, "message": "Duplicate account!", "statusCode": 103 },
   {
     "status": false,
     "message": "Invitation code does not exist!",
-    "statusCode": 104
+    "csc": 104
   },
   {
     "status": true,
     "message": "You have successfully create a new account!",
-    "statusCode": 105
+    "csc": 105
   }
 ]
