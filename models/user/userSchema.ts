@@ -5,10 +5,10 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
+  firstName: { type: String, required: false },
+  lastName: { type: String, required: false },
   email: { type: String, required: true },
-  phone: { type: String, required: true },
+  phone: { type: String, required: false },
   occupation: { type: String },
   isDeveloper: { type: Boolean, required: true },
   isValid: { type: Boolean, required: true },
