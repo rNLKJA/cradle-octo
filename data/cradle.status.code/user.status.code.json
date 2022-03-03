@@ -1,0 +1,28 @@
+[
+  {
+    "status": true,
+    "message": "User exist.",
+    "csc": 100
+  },
+  {
+    "status": false,
+    "message": "User NOT FOUND!",
+    "csc": 101
+  },
+  {
+    "status": false,
+    "message": "Invalid invitation code!",
+    "csc": 102
+  },
+  { "status": false, "message": "Duplicate account!", "statusCode": 103 },
+  {
+    "status": false,
+    "message": "Invitation code does not exist!",
+    "csc": 104
+  },
+  {
+    "status": true,
+    "message": "You have successfully create a new account!",
+    "csc": 105
+  }
+]

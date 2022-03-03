@@ -11,6 +11,7 @@ const jwt = require("jsonwebtoken");
 const password = require("passport");
 import { Request, Response, NextFunction } from "express";
 const randomGenerator = require("../../util/randomGenerator");
+const csc = require("../../data/cradle.status.code/cradle.status.code");
 
 const utils = require("../../util/utils");
 
@@ -33,10 +34,8 @@ const generateNewCode = async (req: Request, res: Response) => {
       );
 
       return res.json({
-        status: false,
-        message: "No user found",
-        statusCode: 123,
-      }); //TODO: define status code
+        ...csc.invitation(102),
+      });
     }
 
     // a user can only create 2 invitation codes
@@ -48,8 +47,7 @@ const generateNewCode = async (req: Request, res: Response) => {
         `User ${req.body.username} has already generated two invitation code`,
       );
       return res.json({
-        status: false,
-        message: "The maximum number of generated invitation code is 2.",
+        ...csc.invitation(101),
       });
     }
 
@@ -70,10 +68,8 @@ const generateNewCode = async (req: Request, res: Response) => {
     );
 
     return res.json({
-      status: true,
-      message: "new code created",
+      ...csc.invitation(100),
       code: invitation.code,
-      statusCode: 123,
     });
   } catch (err) {
     utils.printLog(err);

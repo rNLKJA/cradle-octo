@@ -4,49 +4,60 @@ const path = require("path");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const passport = require("passport");
-const session = require("express-session");
+
+const utils = require("./util/utils");
+
+import session from "express-session";
+const sessionConfig = require("./config/session.config");
+
 const jwt = require("jsonwebtoken");
+
 const cors = require("cors");
+const corsConfig = require("./config/cors.config");
+
 require("./models/database");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 // define express application entry point
 const express = require("express");
-const app = express();
+const cradle = express();
 
 // set middleware
-app.set("views", path.resolve(__dirname + "/public/views"));
-app.set("view engine", "jsx");
-app.engine("jsx", require("express-react-views").createEngine());
-app.use(express.static("public"));
-app.use(bodyParser.json()); // enable json request parse ability
-app.use(bodyParser.urlencoded({ extended: true }));
+cradle.set("views", path.resolve(__dirname + "/public/views"));
+cradle.set("view engine", "jsx");
+cradle.engine("jsx", require("express-react-views").createEngine());
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "http://localhost:9550"],
-    method: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  }),
-);
+cradle.use(express.static("public"));
+cradle.use(bodyParser.json()); // enable json request parse ability
+cradle.use(bodyParser.urlencoded({ extended: true }));
+cradle.use(cookieParser("secret"));
+
+cradle.use(session(sessionConfig));
+cradle.use(cors(corsConfig));
 
 // define back-end application home route
-app.get("/", (req: Request, res: Response) => {
+cradle.get("/", (req: Request, res: Response) => {
   // res.sendFile(path.resolve(`${__dirname}/public/views/index.html`));
   res.render("./index/index", { name: "rNLKJA" });
 });
 
 // import custom routers
 const userRouter = require("./routes/userRouter");
+const sessionRouter = require("./routes/sessionRouter");
 
-app.use("/user", userRouter);
+// handle user related functions
+cradle.use("/user", userRouter);
+
+// TODO: remove this testing route
+// cradle.use("/session", sessionRouter);
 
 // define 404 response page
-app.get("*", (req: Request, res: Response) => {
+cradle.get("*", (req: Request, res: Response) => {
   res.render("./error/404");
 });
 
 // start back-end server
-app.listen(process.env.PORT || 3000, require("./data/appStartInfo")());
+cradle.listen(process.env.PORT || 3000, require("./data/appStartInfo")());
 
-module.exports = app;
+module.exports = cradle;

@@ -12,8 +12,10 @@ const password = require("passport");
 import { Request, Response, NextFunction } from "express";
 const utils = require("../../util/utils");
 
+const csc = require("../../data/cradle.status.code/cradle.status.code");
+
 /**
- * User Validation
+ * User Validation of user existence status
  * This function will validate a user is in user database collection
  * @param {express.Request, userType} req
  * req: {username}
@@ -30,20 +32,20 @@ const userExistence = async (req: Request, res: Response) => {
         `User ${req.body.username} doesn't exist`,
       );
       return res.json({
-        status: false,
-        message: "No user found",
-        statusCode: 123,
+        ...csc.user(101),
       });
     }
 
     utils.printLog("Check user existence", `User ${req.body.username} exist`);
 
     return res.json({
-      status: true,
-      username: user.username,
-      isValid: user.isValid,
-      isAdmin: user.isAdmin,
-      isDeveloper: user.isDeveloper,
+      ...csc.user(100),
+      user: {
+        username: user.username,
+        // isValid: user.isValid,
+        // isAdmin: user.isAdmin,
+        // isDeveloper: user.isDeveloper,
+      },
     });
   } catch (err) {
     console.log(err);
@@ -64,9 +66,7 @@ const createNewUser = async (req: Request, res: Response) => {
       utils.printLog("Create a new user", `No Invitation Code provided`);
 
       return res.json({
-        status: false,
-        message: "Please enter a valid invitation code",
-        statusCode: 123, //TODO: define the status code
+        ...csc.user(102),
       });
     }
 
@@ -82,9 +82,7 @@ const createNewUser = async (req: Request, res: Response) => {
       );
 
       return res.json({
-        status: false,
-        message: "Duplicate account",
-        statusCode: 123,
+        ...csc.user(103),
       });
     }
 
@@ -100,9 +98,7 @@ const createNewUser = async (req: Request, res: Response) => {
       );
 
       return res.json({
-        status: false,
-        message: "Invitation code doesn't exist.",
-        statusCode: 123,
+        ...csc.user(104),
       });
     }
 
@@ -118,10 +114,10 @@ const createNewUser = async (req: Request, res: Response) => {
         req.body.password,
         parseInt(process.env.SALT),
       ),
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
+      // firstName: req.body.firstName,
+      // lastName: req.body.lastName,
       email: req.body.email,
-      phone: req.body.phone,
+      // phone: req.body.phone,
       isDeveloper: req.body.isDeveloper,
       isAdmin: req.body.isAdmin,
       isValid: false,
@@ -132,10 +128,11 @@ const createNewUser = async (req: Request, res: Response) => {
       `A new user ${req.body.username} has been create.`,
     );
 
-    return res.send({
-      status: true,
-      message: `You have successfully create a new account for user: ${req.body.username}.`,
-      accountInfo: newUser,
+    // console.log(csc.user(105));
+
+    return res.json({
+      ...csc.user(105),
+      user: newUser,
     });
   } catch (err) {
     utils.printLog(err);

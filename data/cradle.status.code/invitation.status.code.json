@@ -1,0 +1,17 @@
+[
+  {
+    "status": true,
+    "message": "New Invitation code has been created.",
+    "csc": 100
+  },
+  {
+    "status": false,
+    "message": "The maximum number of generated invitation code is 2.",
+    "csc": 101
+  },
+  {
+    "status": false,
+    "message": "User NOT FOUND",
+    "csc": 102
+  }
+]
