@@ -47,3 +47,4 @@ db.once("open", async () => {
 // obtain the database schemas
 require("./user/userSchema");
 require("./invitation/invitationCodeSchema");
+require("./session/sessionStorageSchema");
