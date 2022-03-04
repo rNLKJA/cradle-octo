@@ -2,25 +2,28 @@
 import { Request, Response, NextFunction } from "express";
 const path = require("path");
 require("dotenv").config();
+
 const mongoose = require("mongoose");
+require("./models/database");
+
 const passport = require("passport");
 
 const utils = require("./util/utils");
 
-import session from "express-session";
-const sessionConfig = require("./config/session.config");
+// import session from "express-session";
+// const sessionConfig = require("./config/session.config");
 
 const jwt = require("jsonwebtoken");
 
 const cors = require("cors");
 const corsConfig = require("./config/cors.config");
 
-require("./models/database");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 // define express application entry point
 const express = require("express");
+
 const cradle = express();
 
 // set middleware
@@ -33,8 +36,8 @@ cradle.use(bodyParser.json()); // enable json request parse ability
 cradle.use(bodyParser.urlencoded({ extended: true }));
 cradle.use(cookieParser("secret"));
 
-cradle.use(session(sessionConfig));
-cradle.use(cors(corsConfig));
+// cradle.use(session(sessionConfig));
+// cradle.use(cors(corsConfig));
 
 // define back-end application home route
 cradle.get("/", (req: Request, res: Response) => {
@@ -50,7 +53,7 @@ const sessionRouter = require("./routes/sessionRouter");
 cradle.use("/user", userRouter);
 
 // TODO: remove this testing route
-// cradle.use("/session", sessionRouter);
+cradle.use("/session", sessionRouter);
 
 // define 404 response page
 cradle.get("*", (req: Request, res: Response) => {
